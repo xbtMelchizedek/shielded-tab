@@ -1,0 +1,46 @@
+[package]
+name = "stab-zec"
+version = "0.0.1"
+description = "Shielded Tab Zcash side: ZIP-321 requests, viewing-key scan and memo decryption. Testnet only, receive only."
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish = false
+
+[lib]
+name = "stab_zec"
+path = "src/lib.rs"
+
+[[bin]]
+name = "stab-zec"
+path = "src/main.rs"
+
+[dependencies]
+# librustzcash release of 2026-06-03: the last set whose MSRV is <= rustc 1.85.1.
+zcash_client_backend = { version = "=0.23.0", default-features = false, features = ["orchard", "lightwalletd-tonic"] }
+zcash_primitives = { version = "=0.28.0", default-features = false, features = ["std", "circuits"] }
+zcash_keys = { version = "=0.14.0", features = ["orchard", "sapling"] }
+zcash_protocol = "=0.9.0"
+zcash_address = "=0.12.0"
+zip321 = "=0.8.0"
+zip32 = "0.2"
+sapling-crypto = "=0.7.0"
+orchard = { version = "=0.14.0", default-features = false, features = ["std"] }
+zcash_note_encryption = "0.4.1"
+tonic = { version = "0.14", default-features = false, features = ["transport", "tls-ring", "tls-webpki-roots"] }
+prost = "0.14"
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+clap = { version = "4.5", features = ["derive", "env"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+hex = "0.4"
+blake2b_simd = "1"
+bs58 = "0.5"
+rand_core = { version = "0.6", features = ["getrandom"] }
+
+[dev-dependencies]
+zcash_primitives = { version = "=0.28.0", features = ["test-dependencies", "transparent-inputs"] }
+sapling-crypto = { version = "=0.7.0", features = ["test-dependencies"] }
+incrementalmerkletree = "0.8"
+transparent = { package = "zcash_transparent", version = "0.8", features = ["transparent-inputs"] }
+rand_chacha = "0.3"

@@ -1,0 +1,23 @@
+{
+  "name": "shielded-tab-broker",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Shielded Tab broker: ZIP-321 quotes, memo matching, FLOP devnet session opening and selective-disclosure verification. Testnet/devnet only.",
+  "license": "MIT OR Apache-2.0",
+  "type": "module",
+  "bin": {
+    "stab-broker": "src/cli.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@flop-labs/cli": "0.6.0",
+    "@flop-labs/sdk": "0.7.0",
+    "@noble/hashes": "1.8.0",
+    "@polkadot/keyring": "14.0.3"
+  }
+}

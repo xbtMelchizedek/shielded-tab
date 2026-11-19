@@ -1,0 +1,11 @@
+*.key
+*.pass
+*.pem
+keystore*.json
+.env*
+state/
+target/
+node_modules/
+REVIEW_NOTES.md
+REPORT.md
+.task*
